@@ -1,47 +1,97 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import Home from '../views/Home.vue'
 
-const routes = [
+import ZakatAdmin from '../views/ZakatAdmin.vue'
+  import FitrahAdmin from '../components/admin/ZakatFitrahContent.vue'
+  import MalAdmin from '../components/admin/ZakatMalContent.vue'
+  import InfaqAdmin from '../components/admin/InfaqContent.vue'
+  import Mustahik from '../components/admin/MustahikContent.vue'
+  import MustahikDetail from '../components/admin/MustahikDetail.vue'
+  import Dashboard from '../components/admin/Dashboard.vue'
+  import TransaksiZakat from '../components/admin/TransaksiZakat.vue'
+  import TransaksiInfaq from '../components/admin/TransaksiInfaq.vue'
+  import Admins from '../components/admin/Admins.vue'
+
+import zakatCalculate from '../views/ZakatCalculate.vue'
+import ZakatSearch from '../views/ZakatSearch.vue'
+
+const route = [
+  // Zakat Page Links
   {
-   path: '/',
-   name: 'Home',
-   component: Home,
-   // kedua di bawah ini variabel custom (untuk di ambil datanya)
-   text: "Home",
-   mainMenu: true,
+    path: '/calculate',
+    name: 'zakatCalculate',
+    component: zakatCalculate,
+    meta: { requiresToken: true }
   },
   {
-    path: '/explore',
-    name: 'Explore',
-    component: Home,
-    // kedua di bawah ini variabel custom (untuk di ambil datanya)
-    text: "Explore",
-    mainMenu: true,
+    path: '/zakatsearch',
+    name: 'zakatSearch',
+    component: ZakatSearch,
+    meta: { requiresToken: true }
   },
   {
-    path: '/notifications',
-    name: 'Notifications',
-    component: Home,
-    // kedua di bawah ini variabel custom (untuk di ambil datanya)
-    text: "Notification",
-    mainMenu: true,
-  },
-  {
-    path: '/messages',
-    name: 'Messages',
-    component: Home,
-    // kedua di bawah ini variabel custom (untuk di ambil datanya)
-    // untuk membuat icon yang dinamis
-    text: "messages",
-    mainMenu: true,
-  },
-  {
-    path: '/profile',
-    name: 'Profile',
-    component: Home,
-    mainMenu: true,
+    path: '/zakatadmin',
+    name: 'ZakatAdmin',
+    component: ZakatAdmin,
+    meta: { requiresToken: true },
+    children: [
+      {
+        path: '',
+        name: 'dashboard',
+        component: Dashboard,
+        meta: { requiresToken: true }
+      },
+      {
+        path: 'fitrah',
+        name: 'fitrah',
+        component: FitrahAdmin,
+        meta: { requiresToken: true }
+      },
+      {
+        path: 'mal',
+        name: 'mal',
+        component: MalAdmin,
+        meta: { requiresToken: true }
+      },
+      {
+        path: 'infaq',
+        name: 'infaq',
+        component: InfaqAdmin,
+        meta: { requiresToken: true }
+      },
+      {
+        path: 'mustahik',
+        name: 'mustahik',
+        component: Mustahik,
+        meta: { requiresToken: true }
+      },
+      {
+        path: 'mustahik/:id',
+        name: 'mustahikDetail',
+        component: MustahikDetail,
+        meta: { requiresToken: true }
+      },
+      {
+        path: 'transaksi/zakat',
+        name: 'transaksiZakat',
+        component: TransaksiZakat,
+        meta: { requiresToken: true }
+      },
+      {
+        path: 'transaksi/infaq',
+        name: 'transaksiInfaq',
+        component: TransaksiInfaq,
+        meta: { requiresToken: true }
+      },
+      {
+        path: 'admins',
+        name: 'admins',
+        component: Admins,
+        meta: { requiresToken: true }
+      },
+    ]
   },
 ]
+
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
