@@ -1,18 +1,28 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+      <Tweet 
+         v-for="tweet in tweets" :key="tweet._id" 
+         :tweet="tweet" 
+      />
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import { ref } from 'vue';
+import Tweet from '../components/Tweet.vue'
+import vweets from '../tweets';
 
 export default {
-  name: 'Home',
-  components: {
-    HelloWorld
-  }
+      components: {
+         Tweet
+      },
+      // setup itu merupakan composition API, baca di doc tentang vue 3 
+      setup() {
+         const tweets = ref(vweets);
+            
+         return {
+            tweets
+         }
+      }
+
+      
 }
 </script>
