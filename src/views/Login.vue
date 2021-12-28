@@ -72,9 +72,6 @@
 import axios from 'axios'
 import zakatAxios from '@/axios.js'
 
-axios.defaults.withCredentials = true
-axios.defaults.headers = {'accept': 'application/json'}
-
 export default {
   data() {
     return {
@@ -88,6 +85,7 @@ export default {
         text: '',
         timeout: 3000,
       },
+
     }
   },
 
@@ -100,21 +98,22 @@ export default {
       })
 
       .then((res) => {
-        // console.log(res.data)
+        console.log(res.data)
         localStorage.setItem('nama', res.data.name)
         localStorage.setItem('role', res.data.role)
         localStorage.setItem('token', res.data.token)
 
         zakatAxios.zakatAxios.defaults.headers.common['Authorization'] = 'Bearer '+ localStorage.getItem('token')
-
         return this.$router.push('/zakatadmin')
       })
 
       .catch((err) => {
+        console.log(err.response)
+        console.log('gagal')
+
         if (err.response.status == 418) {
           return this.toast('Email/Password salah!')
         }
-        console.log(err.response.status)
         this.errors = err.response.status
       })
     },

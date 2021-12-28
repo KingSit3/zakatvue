@@ -5,7 +5,7 @@ const zakatAxios = axios.create({
   baseURL: (process.env.VUE_APP_ZAKAT_ENDPOINT),
   headers: {
     'accept': 'application/json',
-    'Authorization': 'Bearer '+ localStorage.getItem('token')
+    // 'Authorization': 'Bearer '+ token
   },
   timeout: 5000,
   withCredentials: true

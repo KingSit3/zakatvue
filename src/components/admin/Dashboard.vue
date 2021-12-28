@@ -193,9 +193,9 @@ export default {
 
         // Assign data to Zakat Fitrah
         this.fitrahChart.year = res.data.fitrah.year
-        this.fitrahChart.series = [res.data.fitrah.totalData[0].muzakkiBeras, res.data.fitrah.totalData[0].muzakkiUang]
-        this.fitrahChart.totalBeras = res.data.fitrah.totalData[0].totalBeras
-        this.fitrahChart.totalUang = res.data.fitrah.totalData[0].totalUang
+        this.fitrahChart.series = [res.data.fitrah.totalData.muzakkiBeras, res.data.fitrah.totalData.muzakkiUang]
+        this.fitrahChart.totalBeras = res.data.fitrah.totalData.totalBeras
+        this.fitrahChart.totalUang = res.data.fitrah.totalData.totalUang
 
 
         // Assign Data To Infaq
@@ -205,12 +205,12 @@ export default {
         ApexCharts.exec('infaqChart', 'updateSeries', [
           {
             data: res.data.infaq.totalInfaq.map(($value) => {
-              return $value[0].total
+              return $value
             })
           },
           {
             data: res.data.infaq.pengeluaran.map(($value) => {
-              return $value[0].total
+              return $value
             })
           }
         ]

@@ -11,6 +11,7 @@ import ZakatAdmin from '../views/ZakatAdmin.vue'
   import TransaksiInfaq from '../components/admin/TransaksiInfaq.vue'
   import Admins from '../components/admin/Admins.vue'
   
+import zakatHome from '../views/Home.vue'
 import zakatCalculate from '../views/ZakatCalculate.vue'
 import ZakatSearch from '../views/ZakatSearch.vue'
 import Login from '../views/Login.vue'
@@ -30,6 +31,11 @@ const routes = [
   },
   {
     path: '/',
+    name: 'home',
+    component: zakatHome,
+  },
+  {
+    path: '/cari',
     name: 'zakatSearch',
     component: ZakatSearch,
     meta: { requiresToken: true }
