@@ -19,7 +19,11 @@
               class="ring-2 ring-trueGray-300 focus:ring-[#1dad52] rounded-lg p-1.5 focus:outline-none outline-none duration-150 mt-1" 
               placeholder="081xxxx"
             >
-            <button @click="cari()" class="font-semibold ring-2 ring-[#1dad52] text-[#1dad52] hover:text-white hover:bg-[#1dad52] p-1.5 px-5 rounded-xl duration-150">Cari</button>
+            <button 
+              @click="cari()"
+              :disabled="!noTelp" 
+              :class="[noTelp ? 'ring-[#1dad52] text-[#1dad52] hover:text-white hover:bg-[#1dad52]' : 'ring-gray-500 text-gray-500' ,'font-semibold ring-2 p-1.5 px-5 rounded-xl duration-150']" 
+            >Cari</button>
             </div>
           </div>
           <!-- End Textbox Jumlah Zakat -->
@@ -98,7 +102,7 @@ export default {
     return {
       items: {},
       openResult: false,
-      noTelp: '',
+      noTelp: null,
 
       triggerToast: false,
       toastText: '',
@@ -115,14 +119,10 @@ export default {
   methods: {
     cari(){
 
-      // Validation If not Number
-      if (typeof this.noTelp != 'number') {
-        console.log(typeof this.noTelp);
-        this.toast("Input Harus berupa nomor")
-        return 0;
-      }
+      const number = parseInt(this.noTelp)
 
-      axios.zakatAxios.get('cekstatuszakat/'+this.noTelp)
+      // Validation If not Number
+      axios.zakatAxios.get('cekstatuszakat/'+number)
       .then(res => {
         console.log(res);
         this.items = res.data

@@ -78,7 +78,7 @@
 </template>
 
 <script>
-import axios from 'axios'
+import axios from '@/axios.js'
 
 export default {
   data() {
@@ -107,7 +107,7 @@ export default {
 
     saveInfaq(){
       // Save With Axios
-      axios.post('http://127.0.0.1:8000/api/zakat/infaq', {
+      axios.zakatAxios.post('infaq', {
         nama: this.nama,
         jumlah: this.jumlahInfaq,
       })
@@ -120,7 +120,13 @@ export default {
       .catch( (err) => {
         this.saveDataStatus.loading = false
         // Form Validation nama
+
+        if (err.response.status == 401) {
+          return this.$router.push('/login?error=kicked')
+        }
+
         return this.saveDataStatus.fail = err.response.data.errors
+
       })
       // End Save With Axios
     }

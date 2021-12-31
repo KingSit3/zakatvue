@@ -103,8 +103,9 @@ export default {
         localStorage.setItem('role', res.data.role)
         localStorage.setItem('token', res.data.token)
 
-        zakatAxios.zakatAxios.defaults.headers.common['Authorization'] = 'Bearer '+ localStorage.getItem('token')
-        return this.$router.push('/zakatadmin')
+        zakatAxios.zakatAxios.defaults.headers.common['Authorization'] = 'Bearer '+ res.data.token
+
+        return this.$router.push({name: 'home'})
       })
 
       .catch((err) => {

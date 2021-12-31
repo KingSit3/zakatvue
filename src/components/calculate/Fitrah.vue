@@ -122,7 +122,7 @@
 </template>
 
 <script>
-import axios from 'axios'
+import axios from '@/axios.js'
 export default {
   data() {
     return {
@@ -168,7 +168,7 @@ export default {
 
       for (let i = 0; i < this.pezakat.length; i++) {
         
-        axios.post('http://127.0.0.1:8000/api/zakat/fitrah',{
+        axios.zakatAxios.post('fitrah',{
           nama: this.pezakat[i].pezakat,
           no_telp: this.noTelp,
           jenis: this.pezakat[i].tipeZakat,
@@ -185,6 +185,10 @@ export default {
           this.pezakat[i].status = 'failed'
           this.saveDataStatus.fail++
           console.log(err);
+          
+          if (err.response.status == 401) {
+          return this.$router.push('/login?error=kicked')
+          }
         })
       }
 

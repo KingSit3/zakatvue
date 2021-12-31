@@ -13,9 +13,7 @@
     <section class="mt-5 px-20 w-full">
       
       <div v-show="primaryTab == 'fitrah'" >
-        <ZakatFitrah 
-          :secondaryTabProp = secondaryTab 
-        />
+        <ZakatFitrah :secondaryTabProp = secondaryTab />
       </div>
 
       <div v-show="primaryTab == 'mal'" >
@@ -74,6 +72,12 @@ export default {
     getSecondaryTab (params){
       this.secondaryTab = params
     },
+  },
+
+  mounted() {
+    if (!localStorage.getItem('token')) {
+      return this.$router.push('/login?error=kicked')
+    }
   },
 
 }

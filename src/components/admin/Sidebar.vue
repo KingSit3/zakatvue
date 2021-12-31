@@ -1,9 +1,9 @@
 <template>
   <!-- logo -->
   <div class="h-[10%] text-white/90">
-    <a href="#" class="flex justify-center items-center space-x-2 pt-5">
+    <router-link :to="{name: 'home'}" class="flex justify-center items-center space-x-2 pt-5">
       <h1 class="text-xl font-extrabold">Zakat Admin</h1>
-    </a>
+    </router-link>
   </div>
   <!-- End logo -->
 

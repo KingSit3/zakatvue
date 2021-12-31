@@ -1,7 +1,7 @@
 <template>
   <header class="max-w-[1400px] mx-auto relative">
     <h1 class="bg-clip-text bg-[#1dad52] text-transparent text-center text-5xl font-bold p-10">
-      <router-link to="zakathome">
+      <router-link :to="{name: 'home'}">
         Masjid Al-Istiqomah
       </router-link>
     </h1>

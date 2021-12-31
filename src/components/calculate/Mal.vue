@@ -382,7 +382,7 @@
 </template>
 
 <script>
-import axios from 'axios'
+import axios from '@/axios.js'
 export default {
   data() {
     return {
@@ -527,7 +527,7 @@ export default {
       this.saveDataStatus.fail = null
 
       // Save With Axios
-      axios.post('http://127.0.0.1:8000/api/zakat/mal', {
+      axios.zakatAxios.post('mal', {
         nama: this.nama,
         jenis: this.secondaryTabProp,
         data: data,
@@ -541,6 +541,11 @@ export default {
 
       .catch( (err) => {
         this.saveDataStatus.loading = false
+
+        if (err.response.status == 401) {
+          return this.$router.push('/login?error=kicked')
+        }
+        
         // Form Validation nama
         return this.saveDataStatus.fail = err.response.data.errors
       })
