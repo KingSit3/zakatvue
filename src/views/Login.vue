@@ -4,7 +4,7 @@
     <!-- Left Content -->
     <div class="bg-green-400 w-1/2 h-full flex items-center justify-center">
       <h1>
-        <span class="text-5xl font-serif font-extrabold text-white">KingSit</span> <p class="text-2xl font-bold text-white">Project</p>
+        <span class="text-5xl font-serif font-extrabold text-white">Login</span> <p class="text-2xl font-bold text-white">Masjid Al-Istiqomah</p>
       </h1>
     </div>
     <!-- End Left Content -->

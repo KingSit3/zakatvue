@@ -65,11 +65,11 @@
         <!-- End Content -->
 
         <!-- Export PDF button -->
-        <button @click="exportFitrah()" class="absolute top-0.5 right-2 text-white hover:text-white/50 duration-150">
+        <a :href="`${backendEndpoint}fitrahexport`" download class="absolute top-0.5 right-2 text-white hover:text-white/50 duration-150">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
           </svg>  
-        </button>  
+        </a>  
         <!-- End Export PDF button -->
       </div>
       <!-- End Zakat Fitrah -->
@@ -115,6 +115,8 @@ export default {
 
   data() {
     return {
+      backendEndpoint: process.env.VUE_APP_ZAKAT_ENDPOINT,
+      
       fitrahChart: {
         year: null,
         totalBeras: null,
@@ -238,7 +240,18 @@ export default {
     },
 
     exportInfaq(){  
-      alert("berhasil")
+      axios.zakatAxios.get('fitrahexport')
+      .then((res) => {
+        console.log(res);
+        let blob = new Blob([res.data], { type: 'application/pdf' }),
+        url = window.URL.createObjectURL(blob)
+
+        window.open(url) // Mostly the same, I was just experimenting with different approaches, tried link.click, iframe and other solutions
+      })
+
+      .catch(err => {
+        console.log(err);
+      })
     },
 
     exportFitrah(){
@@ -250,7 +263,17 @@ export default {
       .catch(err => {
         console.log(err);
       })
-    }
+    },
+
+    // forceFileDownload(response) {
+    //   console.log(title)
+    //   const url = window.URL.createObjectURL(new Blob([response.data]))
+    //   const link = document.createElement('a')
+    //   link.href = url
+    //   link.setAttribute('download', title)
+    //   document.body.appendChild(link)
+    //   link.click()
+    // },
   },
 
   mounted() {
