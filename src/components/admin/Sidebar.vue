@@ -68,7 +68,8 @@ export default {
   data() {
     return {
       user: localStorage.getItem('nama'),
-      role: localStorage.getItem('role')
+      role: localStorage.getItem('role'),
+      backendEndpoint: process.env.VUE_APP_ZAKAT_ENDPOINT,
     }
   },
   methods: {
