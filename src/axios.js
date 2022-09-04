@@ -7,7 +7,7 @@ const zakatAxios = axios.create({
     'accept': 'application/json',
     // 'Authorization': 'Bearer '+ localStorage.getItem('token')
   },
-  timeout: 5000,
+  // timeout: 5000,
   withCredentials: true
 })
 
