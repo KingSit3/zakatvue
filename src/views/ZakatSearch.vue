@@ -61,7 +61,7 @@
           <tbody>
             <tr v-for="(item, index) in items" :key="item.id" class="odd:bg-green-50">
               <td class="truncate">{{ index+1 }}</td>
-              <td class="truncate">{{ item.nama }}</td>
+              <td class="truncate">{{ item.name }}</td>
               <td class="truncate">{{ item.jenis }}</td>
               <td class="truncate">{{  item.jenis == 'uang' ? convertToCurrency(item.jumlah) : item.jumlah + " L" }}</td>
               <td class="truncate">{{ timeFormatter(item.updated_at) }}</td>

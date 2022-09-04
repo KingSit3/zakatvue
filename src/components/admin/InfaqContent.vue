@@ -48,7 +48,7 @@
         <tbody v-if="items.length > 0 && !isLoading">
           <tr v-for="(item, index) in items" :key="index" class="text-sm mb-16 text-center cursor-default even:bg-gray-100 duration-150">
             <td class="py-2 truncate px-1"> {{ (index + 1)  + (pagination.per_page * (pagination.current_page - 1)) }} </td>
-            <td class="py-2 truncate px-1"> {{ item.nama ? item.nama : '-'  }} </td>
+            <td class="py-2 truncate px-1"> {{ item.name ? item.name : '-'  }} </td>
             <td class="truncate px-1"> {{ convertToCurrency(item.jumlah) }} </td>
             <td class="truncate px-1"> {{ item.created_at ? timeFormatter(item.created_at) : '-' }} </td>
             <td class="truncate px-1">
@@ -270,7 +270,7 @@ export default {
 
     populateModal(id){
       this.modalOpen = true
-      this.nama = this.items[id].nama
+      this.nama = this.items[id].name
       this.jumlah = this.items[id].jumlah
       this.id = this.items[id].id
     },

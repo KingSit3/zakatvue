@@ -54,7 +54,7 @@
         <tbody v-if="items.length > 0 && !isLoading">
           <tr v-for="(item, index) in items" :key="index" class="text-sm mb-16 text-center cursor-default even:bg-gray-100 duration-150">
             <td class="py-2 truncate px-1"> {{ (index + 1)  + (pagination.per_page * (pagination.current_page - 1)) }} </td>
-            <td class="py-2 truncate px-1"> {{ item.nama }} </td>
+            <td class="py-2 truncate px-1"> {{ item.name }} </td>
             <td class="truncate px-1"> {{ item.jenis }} </td>
             <td class="truncate px-1"> {{ item.jenis != 'sapi' && item.jenis != 'kambing' ? convertToCurrency(item.total) : item.total }} </td>
             <td class="truncate px-1"> {{ item.created_at ? timeFormatter(item.created_at) : '-' }} </td>
@@ -460,7 +460,7 @@ export default {
     detailZakat(index){
       this.modalOpen = true
       this.modalData = {
-        nama: this.items[index].nama,
+        nama: this.items[index].name,
         jenis: this.items[index].jenis,
         data: JSON.parse(this.items[index].data),
         total: this.items[index].total,

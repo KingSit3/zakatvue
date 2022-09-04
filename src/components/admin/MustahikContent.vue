@@ -50,7 +50,7 @@
         <tbody v-if="items.length > 0 && !isLoading">
           <tr v-for="(item, index) in items" :key="index" class="text-sm mb-16 text-center cursor-default even:bg-gray-100 duration-150">
             <td class="py-2 truncate px-1"> {{ (index + 1)  + (pagination.per_page * (pagination.current_page - 1)) }} </td>
-            <td><router-link :to="'/zakatadmin/mustahik/'+item.id" class="hover:text-blue-500 duration-150 font-semibold">{{ item.nama_keluarga }} </router-link></td>
+            <td><router-link :to="'/zakatadmin/mustahik/'+item.id" class="hover:text-blue-500 duration-150 font-semibold">{{ item.name_keluarga }} </router-link></td>
             <td class="truncate px-1 capitalize"> {{ item.alamat ? item.alamat+' Rt'+item.rt+'/'+item.rw+' Kel. '+item.kelurahan+' Kec. '+item.kecamatan : '-'  }} </td>
             <td class="truncate px-1"> {{ item.jumlah_anggota_keluarga ? item.jumlah_anggota_keluarga+' Orang' : '-' }} </td>
             <td class="truncate px-1">

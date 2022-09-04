@@ -15,7 +15,7 @@
 
         <!-- Textbox Jumlah Zakat -->
         <div class="flex flex-col space-y-1">
-          <label for="jumlahInfaq">Jumlah Zakat </label>
+          <label for="jumlahInfaq">Jumlah Infaq </label>
           <input id="jumlahInfaq" type="number" v-model="jumlahInfaq" class="ring-2 ring-trueGray-300 focus:ring-[#1dad52] rounded-lg p-1.5 focus:outline-none outline-none duration-150">
           <span v-if="saveDataStatus.fail" class="text-red-500 text-xs"> {{ saveDataStatus.fail.jumlah }} </span>
         </div>

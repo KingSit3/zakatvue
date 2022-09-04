@@ -46,7 +46,7 @@
         <tbody v-if="items.length > 0 && !isLoading">
           <tr v-for="(item, index) in items" :key="index" class="text-sm mb-16 text-center cursor-default even:bg-gray-100 duration-150">
             <td class="py-2 truncate px-1"> {{ (index + 1)  + (pagination.per_page * (pagination.current_page - 1)) }} </td>
-            <td class="py-2 truncate px-1"> <router-link :to="'/zakatadmin/mustahik/'+item.id" class="hover:text-blue-500 duration-150 font-semibold">{{ item.nama_keluarga }} </router-link></td>
+            <td class="py-2 truncate px-1"> <router-link :to="'/zakatadmin/mustahik/'+item.id" class="hover:text-blue-500 duration-150 font-semibold">{{ item.name_keluarga }} </router-link></td>
             <td class="py-2 truncate px-1"> {{ item.jenis_zakat }} </td>
             <td class="truncate px-1"> {{ item.jenis_zakat == 'beras' ? item.jumlah+' Liter' : convertToCurrency(item.jumlah) }} </td>
             <td class="truncate px-1"> {{ item.created_at ? timeFormatter(item.created_at) : '-' }} </td>
@@ -146,7 +146,7 @@
             <div v-show="showSearchDropDown && namaSearch.length > 0" class="absolute top-[70px] w-full shadow-lg ring-2 ring-gray-300 rounded-lg bg-white">
               <div v-if="!namaSearchLoading && mustahikSearchResult.length > 0">
                 <div v-for="(item, index) in mustahikSearchResult" :key="item.id" class="">
-                  <button @click="selectMustahik(index)" class="w-full text-left hover:bg-opacity-25 px-3 py-2 hover:bg-blue-200">{{ item.nama_keluarga }} </button>
+                  <button @click="selectMustahik(index)" class="w-full text-left hover:bg-opacity-25 px-3 py-2 hover:bg-blue-200">{{ item.name_keluarga }} </button>
                 </div>
               </div>
               <div v-else-if="mustahikSearchResult.length == 0">
